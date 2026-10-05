@@ -1,6 +1,9 @@
 /*
  * get the SQL definition for the REST API procedures
  */
+
+declare @namePattern nvarchar(128) = '%[_]AzureADSync[_]%'
+
 select
     name = name,
     objectId = object_id,
@@ -8,4 +11,4 @@ select
 from
     sys.procedures
 where
-    name like 'lstp[_]Import[_]TIF[_]%'
+    name like @namePattern

@@ -1,9 +1,22 @@
-
 /**
  * Generate Add Column Statements
  */
 declare
     @crlf nchar(2) = CHAR(13)+CHAR(10)
+
+declare @namePattern nvarchar(128) = '%[_]AzureADSync[_]%'
+
+declare @TableList table (
+    name varchar(128)
+)
+insert into @TableList
+select name
+from sys.objects
+where
+    type = 'u'
+    and name like @namePattern
+
+-- select * from @TableList -- debug
 
 select
     Statement = -- significant whitespace
@@ -75,11 +88,7 @@ from
                 join sys.columns c
                     on o.object_id = c.object_id
             where
-                o.name in (
-                    'ltbl_Import_TIF_PersonsPositions',
-                    'ltbl_Import_TIF_Positions',
-                    'ltbl_Import_TIF_PersonsContracts'
-                )
+                o.name in (select * from @TableList)
                 and c.name not in (
                     'CDL',
                     'Created',
