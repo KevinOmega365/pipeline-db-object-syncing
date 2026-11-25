@@ -6,8 +6,7 @@ import { bigBanner } from './lib/Banners.js'
 
 ///////////////////////////////////////////////////////////////////////////////
 
-const PROCEDURE_NAME = 'lstp_Import_TIF_PersonsPositions_AlignDataModel'
-
+const PROCEDURE_NAME = 'lstp_Import_DTS_DCS_AlignDataModel'
 
 const SQL_STATEMENT_INDEX = 0
 const TABLE_NAME_INDEX = 1
