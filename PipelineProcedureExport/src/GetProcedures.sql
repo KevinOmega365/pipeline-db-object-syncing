@@ -2,7 +2,7 @@
  * get the SQL definition for the REST API procedures
  */
 
-declare @namePattern nvarchar(128) = '%[_]AzureADSync[_]%'
+declare @namePattern nvarchar(128) = 'lstp_Import_DTS_DCS%'
 
 select
     name = name,
